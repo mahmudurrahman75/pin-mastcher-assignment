@@ -43,7 +43,7 @@
                                     <div class="button" onclick="calculator.screen.value =''">C</div>
                                 </div>
                                 <div>
-                                    <button id="submit" type="submit" class="submit-btn">Submit</button>
+                                    <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
                                     <p class="action-left">3 try left</p>
                                 </div>
                            </div>
@@ -54,8 +54,8 @@
                     
             </div>
         <div id="notify-pin" class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="pin-don't-match" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="matched" class="notify">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
 
@@ -80,15 +80,21 @@
         // 4rd step.....
 
 
-        const submitBtn = document.getElementById("submit");
-        submitBtn.addEventListener("click",function(){
+        const submitBtn = document.getElementById("submitBtn");
+        submitBtn.addEventListener("click", function(){
             let inputField1 = document.getElementById("show-generate-pin").value;
-            const inputFieldNum1 = parseFloat(inputField1);
+            let inputFieldNum1 = parseFloat(inputField1);
             let inputField2 = document.getElementById("show-number").value;
-            const inputFieldNum2 = parseFloat(inputField2);
-            if(inputFieldNum1 == inputFieldNum2){
-            document.getElementById("notify-pin").style.display = "block";
-        }
+            let inputFieldNum2 = parseFloat(inputField2);
+
+            if(inputFieldNum1==inputFieldNum2){
+                document.getElementById("matched").style.display = "block";
+                return inputField1;
+            }
+
+            if(inputFieldNum1 < inputFieldNum2 || inputFieldNum1 > inputFieldNum2 ){
+                document.getElementById("pin-don't-match").style.display = "block";
+            }
 
     })
         
