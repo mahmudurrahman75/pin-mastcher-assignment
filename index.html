@@ -75,21 +75,6 @@
             document.getElementById("show-generate-pin").value = result;
         })
 
-        // 3rd step....
-
-        // const numBtn7 = document.getElementById("num-7");
-        // numBtn7.addEventListener("click", function(){
-        //     document.getElementById("show-number").value = 7;
-        // })
-        // const numBtn8 = document.getElementById("num-8");
-        // numBtn8.addEventListener("click", function(){
-        //     document.getElementById("show-number").value = 8;
-        // })
-        // const numBtn9 = document.getElementById("num-9");
-        // numBtn9.addEventListener("click", function(){
-        //     document.getElementById("show-number").value = 9;
-        // })
-
 
 
         // 4rd step.....
@@ -98,16 +83,14 @@
         const submitBtn = document.getElementById("submit");
         submitBtn.addEventListener("click",function(){
             let inputField1 = document.getElementById("show-generate-pin").value;
-            const inputField10 = parseFloat(inputField1);
+            const inputFieldNum1 = parseFloat(inputField1);
             let inputField2 = document.getElementById("show-number").value;
-            const inputField20 = parseFloat(inputField2);
-            if(inputField10 == inputField20){
+            const inputFieldNum2 = parseFloat(inputField2);
+            if(inputFieldNum1 == inputFieldNum2){
             document.getElementById("notify-pin").style.display = "block";
         }
 
     })
-        
-
         
 
     </script>
