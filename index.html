@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="show-generate-pin" class="form-control" type="text">
+                    <button id="generate-pin" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <form action="" name="calculator">
+                        <input id="show-number" type="text" name="screen" disabled>
+                        <div class="numbers">
+                            <div class="calc-body">
+                                <div class="calc-button-row">
+                                  <div id="num-7" class="button" onclick="calculator.screen.value +='7'">7</div>
+                                  <div id="num-8" class="button" onclick="calculator.screen.value+='8'">8</div>
+                                  <div id="num-9" class="button" onclick="calculator.screen.value+='9'">9</div>
+                                </div>
+                                <div class="calc-button-row">
+                                  <div class="button" onclick="calculator.screen.value+='4'">4</div>
+                                  <div class="button" onclick="calculator.screen.value+='5'">5</div>
+                                  <div class="button" onclick="calculator.screen.value+='6'">6</div>
+                                </div>
+                                <div class="calc-button-row">
+                                  <div class="button" onclick="calculator.screen.value+='1'">1</div>
+                                  <div class="button" onclick="calculator.screen.value+='2'">2</div>
+                                  <div class="button" onclick="calculator.screen.value+='3'">3</div>
+                                </div>
+                                <div class="calc-button-row">
+                                    <div class="button" onclick="calculator.screen.value = calculator.screen.value.slice(0,-1)"><</div>
+                                    <div class="button" onclick="calculator.screen.value+='0'">0</div>
+                                    <div class="button" onclick="calculator.screen.value =''">C</div>
+                                </div>
+                                <div>
+                                    <button id="submit" type="submit" class="submit-btn">Submit</button>
+                                    <p class="action-left">3 try left</p>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                    
+            </div>
+        <div id="notify-pin" class="notify-section">
+            <p class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+
+    <script>
+
+        // 1st step....
+        document.getElementById("notify-pin").style.display = "none";
+
+        // 2nd step....
+
+        const generatePinBtn = document.getElementById("generate-pin");
+        generatePinBtn.addEventListener("click", function(){
+            let number = Math.random(1-1000) * 10000;
+            let result = Math.round(number);
+            
+            document.getElementById("show-generate-pin").value = result;
+        })
+
+        // 3rd step....
+
+        // const numBtn7 = document.getElementById("num-7");
+        // numBtn7.addEventListener("click", function(){
+        //     document.getElementById("show-number").value = 7;
+        // })
+        // const numBtn8 = document.getElementById("num-8");
+        // numBtn8.addEventListener("click", function(){
+        //     document.getElementById("show-number").value = 8;
+        // })
+        // const numBtn9 = document.getElementById("num-9");
+        // numBtn9.addEventListener("click", function(){
+        //     document.getElementById("show-number").value = 9;
+        // })
+
+
+
+        // 4rd step.....
+
+
+        const submitBtn = document.getElementById("submit");
+        submitBtn.addEventListener("click",function(){
+            let inputField1 = document.getElementById("show-generate-pin").value;
+            const inputField10 = parseFloat(inputField1);
+            let inputField2 = document.getElementById("show-number").value;
+            const inputField20 = parseFloat(inputField2);
+            if(inputField10 == inputField20){
+            document.getElementById("notify-pin").style.display = "block";
+        }
+
+    })
+        
+
+        
+
+    </script>
+
+
+</body>
+</html>
